@@ -1,6 +1,7 @@
 const express = require('express');
 const path = require('path');
 const app = express();
+const data = require('./select_data')
 
 // Serve the static files from the Vue app's dist directory
 app.use(express.static(path.join(__dirname, 'dist')));
@@ -11,6 +12,7 @@ app.use(express.json());
 
 //Serve index.html for any route
 app.get('*', (req, res) => {
+    console.log(data.cpuList);
     res.sendFile(path.join(__dirname, 'dist', 'index.html'));
 });
 
